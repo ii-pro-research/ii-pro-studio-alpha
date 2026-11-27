@@ -1,0 +1,14 @@
+# Dockerfile-specific context allowlist: never send Core, SQLite, School or .local.
+**
+!ii_pro_worker/
+!ii_pro_worker/runtime.py
+!ii_pro_worker/wire.py
+!ii_pro_worker/probes.py
+!ii_pro_worker/school_contract.py
+!ii_pro_worker/python_runner.py
+!ii_pro_worker/app_contract.py
+!ii_pro_worker/app_runner.py
+!deployment/
+!deployment/worker/
+!deployment/worker/Dockerfile
+!deployment/worker/Dockerfile.dockerignore

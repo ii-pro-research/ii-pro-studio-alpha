@@ -1,0 +1,20 @@
+{
+  "model": "gpt-6.2-sol",
+  "reasoning": {
+    "effort": "low"
+  },
+  "input": [
+    {
+      "role": "developer",
+      "content": "You are GPT Architect. Return a concise public text plan. No tools, file access or hidden reasoning."
+    },
+    {
+      "role": "user",
+      "content": "Ты — ведущий архитектор II PRO Studio. В нашей команде будут работать два мощных GPT и локальная Qwen2.5-Coder-7B.\n\nРазработай краткий практический план создания Python-приложения для управления личными задачами.\n\nОпредели структуру проекта, основные функции, критерии готовности и тесты. Распредели работу между GPT Engineer и локальной Qwen7B. Объясни, чему именно Qwen должна научиться при выполнении своего задания.\n\nВерни конкретный структурированный план без выполнения инструментов"
+    }
+  ],
+  "store": false,
+  "stream": true,
+  "tools": [],
+  "tool_choice": "none"
+}

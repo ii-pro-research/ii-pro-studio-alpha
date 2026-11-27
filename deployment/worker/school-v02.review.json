@@ -1,0 +1,66 @@
+{
+  "review_digest": "b24f7d54f5c99760f9088a79ce6f96c7587fcb9d6953afb416fda047c02d0c21",
+  "review": {
+    "revision": "worker-docker-review-v021",
+    "resources": {
+      "context": "desktop-linux",
+      "cpu": "0.5",
+      "memory": "128m",
+      "pids": 16,
+      "revision": "docker-fixed-v021",
+      "user": "65532:65532",
+      "network": "none",
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "mounts": [],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,nodev,size=1m,mode=0700,uid=65532,gid=65532"
+      ],
+      "memory_swap": "128m",
+      "pull": "never",
+      "init": true,
+      "entrypoint": [
+        "/usr/local/bin/python",
+        "-I",
+        "-S",
+        "-B",
+        "/opt/worker/runtime.py"
+      ],
+      "max_runtime_ms": 5000,
+      "max_frame_bytes": 16384,
+      "max_output_bytes": 4096,
+      "core_secrets": false,
+      "docker_socket": false
+    },
+    "sources": {
+      "runtime.py": "29106233935e009863e0233d1c9227eb633fd5a74c60c34727c54519cd5518af",
+      "wire.py": "cd8f8a253ace9488c702bc42bc5c7da648ed0e25bdb2a7c8636f2f09c7005263",
+      "probes.py": "ac7c3cf71c82131f0a31ee4cdcd655c538454113453487a8301edb99ca2a1901",
+      "school_contract.py": "33df0fa6f517d9913465b09d3d491b8a5eb53c0de27bfe9d498ba73f6efd7252",
+      "python_runner.py": "91d68235fae83879895680310ee35fb49710bfbebaec181352810ef501f40f26"
+    },
+    "recipe": {
+      "deployment/worker/Dockerfile": "efac2471b1cebb65cdf82ed1cf8dec60c1fbdb51c99c44cbd9f6e7eee7d582c3",
+      "deployment/worker/Dockerfile.dockerignore": "5cf986e33a047d99fd28514eeadad0af6f49eccbe3c0cdb8b525d8b8b43a591a",
+      "deployment/worker/runtime.lock.json": "1443b00ee6d18b4ad8c52f440f2d751313e8fa80b6bd6a96ab8f0a0a306d2154"
+    }
+  },
+  "base": {
+    "repository": "docker.io/library/python",
+    "reference_tag": "3.12-slim-bookworm",
+    "python_version": "3.12.16",
+    "platform": "linux/amd64",
+    "index_digest": "sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df",
+    "platform_digest": "sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4",
+    "config_digest": "sha256:313cf8f190a1abab00472c1f0c950c10486c22114bcd8aef2a8198fb587a6d18",
+    "compressed_layers_bytes": 45269504,
+    "dependencies": "Python standard library only; no apt or pip installation",
+    "source": "https://hub.docker.com/_/python"
+  },
+  "status": "AUTHORIZED_DEVELOPER_FIXTURES_ONLY_NO_QWEN_EXECUTION"
+}

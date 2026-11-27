@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ii-pro-core"
+version = "0.1.0"
+description = "Local task, run, artifact and approval journal for II PRO Studio"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest==9.2.0"]
+siwc = ["PyJWT[crypto]==2.15.1", "cryptography==50.0.2"]
+
+[project.scripts]
+ii-pro-core = "ii_pro_core.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ii_pro_core*", "ii_pro_school*", "ii_pro_worker*", "ii_pro_ui*", "ii_pro_team*", "ii_pro_local*"]
+
+[tool.setuptools.package-data]
+ii_pro_ui = ["static/index.html", "static/assets/*"]
+ii_pro_team = ["devkit_bridge/project-output.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"

@@ -1,0 +1,18 @@
+{
+  "limits": {
+    "list_items": 5,
+    "item_chars": 180,
+    "changes": 4,
+    "fragments": 8,
+    "file_chars": 4096,
+    "total_bytes": 4400,
+    "explanation_chars": 400,
+    "summary_chars": 700
+  },
+  "templates": {
+    "project_architect": "Plan the supplied Python project using only approved paths. No tools or file access. Return only a JSON object with exactly the keys plan and checks, both arrays of 1 to @list_items@ nonblank strings, each at most @item_chars@ characters. Keep each item concise. Use no Markdown fences, duplicate keys, nulls or credential-like text.",
+    "project_engineer": "Propose changes using only approved Python paths. No tools or file access. Never claim execution. Return only JSON with exactly changes and explanation. changes must contain 1 to @changes@ objects with exactly path and after. Use each approved path once, with changed, syntactically valid complete Python source in after. Each file may contain at most @file_chars@ characters and all proposed source together at most @total_bytes@ UTF-8 bytes. explanation must be nonblank and at most @explanation_chars@ characters. Prefer compact code and avoid large JSON-escaped blocks. Use no Markdown fences, duplicate keys, nulls or credential-like text.",
+    "project_engineer_fragments": "Propose minimal changes to existing approved Python files. No tools, file access, or claims of execution. Return only JSON with exactly edits and explanation. edits must contain 1 to @fragments@ objects with exactly path, before_sha256, before and after. Copy the original file hash from source_budgets. Copy each nonempty before fragment exactly from frozen source, including whitespace, and extend it until it occurs exactly once. Put its replacement in after. Edits must not overlap and all anchors refer to the original source. No new files or file deletions. The reconstructed full file must remain valid Python, at most @file_chars@ characters per file and @total_bytes@ UTF-8 bytes across changed files. source_budgets gives available growth per file; the byte limit is shared across changed files. Keep additions within that budget or offset them by shortening existing code. If previous.size_repair is present, context.source is your rejected candidate in full. Anchor to that exact code and its hash. Use the measured size and limits in previous.size_repair to shorten it while preserving every acceptance requirement. explanation is nonblank and at most @explanation_chars@ characters. Use no Markdown fences, duplicate keys, nulls or credential-like text.",
+    "project_reviewer": "Review the supplied evidence. When previous.source_role is accepted_working_copy, context.source is the accepted candidate; snapshot is the baseline identity. Use the diff excerpt and distinguish your inspection of the candidate from the Worker checks you were given. No tools or file access. Separate static checks from functional results. Return only JSON with exactly summary and coaching. summary must be nonblank and at most @summary_chars@ characters. coaching must contain 1 to @list_items@ nonblank strings, each at most @item_chars@ characters. Use no Markdown fences, duplicate keys, nulls or credential-like text."
+  }
+}

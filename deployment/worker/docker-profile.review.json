@@ -1,0 +1,72 @@
+{
+  "review_digest": "f9980e4e94962e1e6329d15bc79dd5f88febdccd7f4c610c4ac6db89d95e7d48",
+  "review": {
+    "revision": "worker-docker-review-v021",
+    "resources": {
+      "context": "desktop-linux",
+      "cpu": "0.5",
+      "memory": "128m",
+      "pids": 16,
+      "revision": "docker-fixed-v021",
+      "user": "65532:65532",
+      "network": "none",
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "mounts": [],
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,nodev,size=1m,mode=0700,uid=65532,gid=65532"
+      ],
+      "memory_swap": "128m",
+      "pull": "never",
+      "init": true,
+      "entrypoint": [
+        "/usr/local/bin/python",
+        "-I",
+        "-S",
+        "-B",
+        "/opt/worker/runtime.py"
+      ],
+      "max_runtime_ms": 5000,
+      "max_frame_bytes": 16384,
+      "max_output_bytes": 4096,
+      "core_secrets": false,
+      "docker_socket": false
+    },
+    "sources": {
+      "runtime.py": "e1c053dc4466ddd3b4b69d763dc92f965c75baadebf776133637cfdc37e37901",
+      "wire.py": "a8d77c36ff7c6eaf56d2e8303952b382675f41ba641cd7c8ab88945e1bc83994",
+      "probes.py": "e8093d1704a15fd6b7217f2bb6c11ecd070a7d3daa2c945e94360c99dbd82165"
+    },
+    "recipe": {
+      "deployment/worker/Dockerfile": "134a37f2d94179cb15f817aebd1722d4f325c630c233d7dc9136d293e1d40423",
+      "deployment/worker/Dockerfile.dockerignore": "7201b946a70eff523dc2cb65d1a2375b7cd5a9ae8e37fdf9e1d7e65763407037",
+      "deployment/worker/runtime.lock.json": "1443b00ee6d18b4ad8c52f440f2d751313e8fa80b6bd6a96ab8f0a0a306d2154"
+    }
+  },
+  "base": {
+    "repository": "docker.io/library/python",
+    "reference_tag": "3.12-slim-bookworm",
+    "python_version": "3.12.16",
+    "platform": "linux/amd64",
+    "index_digest": "sha256:935c3c5b12357a7e10caa9c1e6ca5692344d97cf229832ef584be2cec9fc03df",
+    "platform_digest": "sha256:0f086103b026048cc50cb5da25ec435c023c5241a83fc44daea593377abc61c4",
+    "config_digest": "sha256:313cf8f190a1abab00472c1f0c950c10486c22114bcd8aef2a8198fb587a6d18",
+    "compressed_layers_bytes": 45269504,
+    "dependencies": "Python standard library only; no apt or pip installation",
+    "source": "https://hub.docker.com/_/python"
+  },
+  "status": "FIRST_SMOKE_APPROVED_AND_COMPLETED",
+  "approval_scope": {
+    "allowed_execution": "one first smoke only",
+    "completed_executions": 1,
+    "further_execution_approved": false,
+    "extended_tests_approved": false,
+    "forced_termination_approved": false
+  },
+  "first_smoke_evidence": ".local/worker-v021-tests/first-smoke-approved/"
+}

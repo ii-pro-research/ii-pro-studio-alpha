@@ -1,0 +1,17 @@
+# Preserve the actual experiment bytes, including the original model response.
+experiments/school_v01_first/** -text
+# Docker review hashes cover exact bytes, including line endings.
+deployment/worker/Dockerfile -text
+deployment/worker/Dockerfile.dockerignore -text
+deployment/worker/runtime.lock.json -text
+ii_pro_worker/runtime.py -text
+ii_pro_worker/wire.py -text
+ii_pro_worker/probes.py -text
+ii_pro_worker/school_contract.py -text
+ii_pro_worker/python_runner.py -text
+# Keep the shipped browser build identical to the reviewed build bytes.
+ii_pro_ui/static/** -text
+# Official source snapshots, compiled transport and runtime inventory use exact bytes.
+ii_pro_team/devkit_bridge/** -text
+# Preserve exact upstream notice text, including its original trailing spaces.
+ii_pro_team/devkit_bridge/vendor/THIRD_PARTY_NOTICES.md -whitespace
