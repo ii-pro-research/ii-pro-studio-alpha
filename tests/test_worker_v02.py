@@ -176,8 +176,9 @@ def test_concurrent_dispatch_preserves_single_attempt(tmp_path):
         assert len(core.runs.list(run.task_id)) == len(worker.jobs()) == 1
 
 
-def test_worker_receives_no_core_import_env_or_socket(tmp_path, monkeypatch):
+def test_native_fixture_does_not_inherit_core_import_or_environment(tmp_path, monkeypatch):
     monkeypatch.setenv("CORE_PRIVATE_FIXTURE", "not-forwarded")
+    monkeypatch.setenv("DOCKER_HOST", "unix:///var/run/docker.sock")
     monkeypatch.setenv("PYTHONPATH", str(Path(__file__).resolve().parents[1]))
     core, _ = setup(tmp_path)
     with core:
@@ -188,8 +189,9 @@ def test_worker_receives_no_core_import_env_or_socket(tmp_path, monkeypatch):
         assert contract["core_importable"] is False
         assert "CORE_PRIVATE_FIXTURE" not in contract["environment_keys"]
         assert "PYTHONPATH" not in contract["environment_keys"]
-        assert contract["docker_socket_present"] is False
-        # This checks the data channel, NOT denial of same-user filesystem access.
+        assert "DOCKER_HOST" not in contract["environment_keys"]
+        # Native fixtures share the host filesystem. Docker isolation is tested separately.
+        assert contract["docker_socket_present"] is Path("/var/run/docker.sock").exists()
 
 
 @pytest.mark.parametrize("task", [
